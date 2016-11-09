@@ -25,6 +25,9 @@ function addList(){
 	container_button.style.position = "relative";
 	container_button.style.cssFloat = "left";
 
+	//Se deja en blanco el input una vez que se añada la tarea
+	document.getElementById("input-list").value = "";	
+
 	//funcionalidad del ícono Eliminar. Que sea una función que se llame cuando se presiona el ícono delete
 	var delete_element = document.getElementsByClassName("delete_btn");
 	for(var i= 0; i < delete_element.length; i++){
@@ -38,7 +41,7 @@ function addList(){
 	//Generar nuevo botón que irá a la izquierda
 	var container_button_left = document.createElement("button");
 	//Traer el input con el value que se ingresó anteriormente
-	var input_text= document.getElementById("input-list").value;
+	var input_text = document.getElementsByTagName("input")[0].value;
 	var input_text_node = document.createTextNode(input_text);
 
 	//botón "Añadir lista"
@@ -49,7 +52,7 @@ function addList(){
 
 		var list = document.getElementsByTagName("div")[5];
 		
-		container_button_left.appendChild(input_text_node);
+		container_button_left.insertBefore(input_text_node, container_button_left.childNodes[0]);
 		container_button_left.appendChild(input_button);
 		input_button.appendChild(input_button_text);
 		input_button.style.display = "block";
@@ -66,7 +69,7 @@ function addList(){
 	})
 
 	//cuando se hace click en input
-	/*input_text_node.addEventListener("click", function(){
+	/*input_text.addEventListener("click", function(){
 
 		
 	})*/
@@ -74,7 +77,6 @@ function addList(){
 	//cuando se hace click en "Añadir tarjeta"
 	//Crear textarea para escribir la lista
 		var textarea = document.createElement("textarea");
-		textarea.name = "text";
 		textarea.style.display = "block";
 		//Botón de Añadir + ícono eliminar
 		var new_add_button = document.createElement("button");
@@ -96,13 +98,15 @@ function addList(){
 		container_button_left.appendChild(textarea);
 		container_button_left.appendChild(new_add_button);
 		container_button_left.appendChild(new_delete_button);
-
 	})
+
 	//Agregar texto ingresado en textarea cuando se presiona el botón Añadir (new-add-button)
 	new_add_button.addEventListener("click", function(){
-		var textarea_text = document.getElementsByTagName("textarea").value;
+		var textarea_text = document.getElementsByTagName("textarea")[0].value;
+		var textarea_text_node = document.createTextNode(textarea_text);
 
-		container_button_left.(textarea_text);
+		container_button_left.insertBefore(textarea_text_node, container_button_left.childNodes[0]);
 	})
-
+	//Se deja en blanco el textarea una vez que se añade la lista tarea
+	document.getElementsByTagName("textarea").value = "";
 }
