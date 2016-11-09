@@ -2,7 +2,7 @@ function addList(){
 	var hide_text = document.getElementById("hide-text");
 	hide_text.style.display = "none";
 
-	var show_input = document.getElementById("input-list");
+	var show_input = document.getElementsByClassName("input-list")[0];
 	show_input.style.display = "block";
 
 	//Agregar botón Guardar
@@ -23,10 +23,7 @@ function addList(){
 	container_button.appendChild(delete_button);
 	container_button.style.display =  "inline-block";
 	container_button.style.position = "relative";
-	container_button.style.cssFloat = "left";
-
-	//Se deja en blanco el input una vez que se añada la tarea
-	document.getElementById("input-list").value = "";	
+	container_button.style.cssFloat = "left";	
 
 	//funcionalidad del ícono Eliminar. Que sea una función que se llame cuando se presiona el ícono delete
 	var delete_element = document.getElementsByClassName("delete_btn");
@@ -41,8 +38,10 @@ function addList(){
 	//Generar nuevo botón que irá a la izquierda
 	var container_button_left = document.createElement("button");
 	//Traer el input con el value que se ingresó anteriormente
-	var input_text = document.getElementsByTagName("input")[0].value;
+	var input_text = document.getElementsByClassName("input-list")[0].value;
 	var input_text_node = document.createTextNode(input_text);
+	var container_input_text = document.createElement("p");
+	container_input_text.appendChild(input_text_node);
 
 	//botón "Añadir lista"
 	var input_button = document.createElement("button");
@@ -51,8 +50,8 @@ function addList(){
 	save_button.addEventListener("click", function(){
 
 		var list = document.getElementsByTagName("div")[5];
-		
-		container_button_left.insertBefore(input_text_node, container_button_left.childNodes[0]);
+				
+		container_button_left.appendChild(container_input_text);
 		container_button_left.appendChild(input_button);
 		input_button.appendChild(input_button_text);
 		input_button.style.display = "block";
@@ -69,10 +68,10 @@ function addList(){
 	})
 
 	//cuando se hace click en input
-	/*input_text.addEventListener("click", function(){
-
-		
-	})*/
+	container_input_text.addEventListener("click", function(){
+		//me muestra el input nuevamente
+		show_input.appendChild(container_button_left);		
+	})
 
 	//cuando se hace click en "Añadir tarjeta"
 	//Crear textarea para escribir la lista
