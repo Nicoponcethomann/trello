@@ -1,9 +1,13 @@
 body{
 	background-color: #34ACD1;
-	margin: 3%;
 }
 
-#add-list{
+.trello-logo{
+	width: 15%;
+	margin: 2%;
+}
+
+#add-list, .button-left{
 	display: inline-block;
 	width: 200px;
 	padding: 8px;
@@ -32,10 +36,15 @@ body{
 	display: none;
 }
 
-.save_btn{
+input{
+	width: 100%;
+	margin: 5% 0%;
+}
+
+.save_btn, .new-add-button{
 	display: inline-block;
-	width: 80px;
-	padding: 8px;
+	width: 40%;
+	padding: 2%;
 	color: white;
 	border: 1px solid #fff;
 	border-radius: 5px;
@@ -44,6 +53,19 @@ body{
 	text-decoration: none;
 	transition: border-color 0.3s ease-out,
 	color 0.3s ease-out;
-	background-color: blue;
+	background-color: transparent;
+	margin-right: 7%;
+}
 
+.add-list-button{
+	width: 100%;
+	background-color: transparent;
+	border: 1px solid #fff;
+	border-radius: 5px;
+}
+
+textarea{
+	width: 100%;
+	margin: 5% 0%;
+	color: black;
 }

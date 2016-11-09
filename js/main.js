@@ -26,16 +26,13 @@ function addList(){
 	container_button.style.cssFloat = "left";
 
 	//funcionalidad del ícono Eliminar. Que sea una función que se llame cuando se presiona el ícono delete
-	function deleteElement(){
-		var delete_element = document.getElementsByClassName("delete_btn");
-		for(var i= 0; i < delete_element.length; i++){
-			delete_element[i].onclick = function(){
-				var trash = this.parentElement;
-				trash.style.display = "none";
-			}
+	var delete_element = document.getElementsByClassName("delete_btn");
+	for(var i= 0; i < delete_element.length; i++){
+		delete_element[i].onclick = function(){
+			var trash = this.parentElement;
+			trash.style.display = "none";
 		}
 	}
-	
 
 	//Cuando se aprieta el botón guardar, se genera un nuevo div/botón que contiene
 	//Generar nuevo botón que irá a la izquierda
@@ -50,13 +47,15 @@ function addList(){
 
 	save_button.addEventListener("click", function(){
 
-		var list = document.getElementsByTagName("div")[2];
+		var list = document.getElementsByTagName("div")[5];
 		
 		container_button_left.appendChild(input_text_node);
 		container_button_left.appendChild(input_button);
 		input_button.appendChild(input_button_text);
 		input_button.style.display = "block";
 		container_button_left.style.margin = "0% 2%";
+		container_button_left.className= "button-left";
+		input_button.className= "add-list-button";
 
 		list.appendChild(container_button_left);
 		//agregamos la propiedad para que se vaya al izquierda de la página
@@ -73,9 +72,9 @@ function addList(){
 	})*/
 
 	//cuando se hace click en "Añadir tarjeta"
-	input_button.addEventListener("click", function(){
-		//Crear textarea para escribir la lista
+	//Crear textarea para escribir la lista
 		var textarea = document.createElement("textarea");
+		textarea.name = "text";
 		textarea.style.display = "block";
 		//Botón de Añadir + ícono eliminar
 		var new_add_button = document.createElement("button");
@@ -83,8 +82,10 @@ function addList(){
 		var new_delete_button = document.createElement("span");
 		var new_delete_icon = document.createElement("i");
 		new_delete_icon.classList.add("fa", "fa-times");
-		new_add_button.className = "delete_btn";
+		new_delete_button.className = "delete_btn";
+		new_add_button.className= "new-add-button";		
 
+	input_button.addEventListener("click", function(){
 		//esconder input_button
 		input_button.style.display = "none";
 
@@ -96,6 +97,12 @@ function addList(){
 		container_button_left.appendChild(new_add_button);
 		container_button_left.appendChild(new_delete_button);
 
-	})	
+	})
+	//Agregar texto ingresado en textarea cuando se presiona el botón Añadir (new-add-button)
+	new_add_button.addEventListener("click", function(){
+		var textarea_text = document.getElementsByTagName("textarea").value;
+
+		container_button_left.(textarea_text);
+	})
 
 }
